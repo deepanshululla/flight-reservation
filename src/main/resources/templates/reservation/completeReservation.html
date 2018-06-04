@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          th:href="@{/lib/bootstrap/dist/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="../../static/css/app.css" th:href="@{/css/app.css}"/>
+    <title>Complete Reservation</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form_complete_reserve">
+            <h2 class="box-heading">Review and Complete Reservation</h2>
+            <br>
+            <form method="post" th:action="@{/completeReservation}" th:object="${reservationRequest}">
+                <small id="flightDetails" class="form-text text-muted"><strong>Flight Details</strong></small>
+                <div class="form-group row">
+                    <label for="source" class="col-sm-4 col-form-label">From</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="source" th:value="${flight.departureCity}" name="source" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="destination" class="col-sm-4 col-form-label">To</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="destination" name="destination" th:value="${flight.arrivalCity}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="operatingAirlines" class="col-sm-4 col-form-label">Operating Airlines</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="operatingAirlines" th:value="${flight.operatingAirlines}" name="operatingAirlines" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="estimatedDepartureTime" class="col-sm-4 col-form-label">Estimated Departure</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="estimatedDepartureTime" th:value="${flight.estimatedDepartureTime}" name="estimatedDepartureTime" readonly>
+
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <div class="col-sm-8">
+                        <input type="hidden" class="form-control" id="flightId" name="flightId" th:value="${flight.id}">
+                    </div>
+
+                </div>
+
+                <small id="passengerDetails" class="form-text text-muted"><strong>Passenger Details</strong></small>
+                <div class="form-group row">
+                    <label for="passengerFirstName" class="col-sm-4 col-form-label">First Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="passengerFirstName" name="passengerFirstName">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="passengerMiddleName" class="col-sm-4 col-form-label">Middle name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="passengerMiddleName" name="passengerMiddleName">
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label for="passengerLastName" class="col-sm-4 col-form-label">Last name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="passengerLastName" name="passengerLastName">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="passengerEmail" class="col-sm-4 col-form-label">Email</label>
+                    <div class="col-sm-8">
+                        <input type="email" class="form-control" id="passengerEmail" name="passengerEmail">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="passengerPhoneNumber" class="col-sm-4 col-form-label">Phone Number</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="passengerPhoneNumber" name="passengerPhoneNumber">
+                    </div>
+
+                </div>
+                <small id="cardDetails" class="form-text text-muted"><strong>Card Details</strong></small>
+                <div class="form-group row">
+                    <label for="nameOnCard" class="col-sm-4 col-form-label">Name on Card</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="nameOnCard" name="nameOnCard">
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label for="cardNumber" class="col-sm-4 col-form-label">Credit Card Number</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="cardNumber" name="cardNumber">
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label for="cardExpiration" class="col-sm-4 col-form-label">Card expiration Date</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="cardExpiration" name="cardExpiration">
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label for="cardSecCode" class="col-sm-4 col-form-label">3 digit Security Code</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="cardSecCode" name="secCode">
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="btn btn-lg btn-success">Reserve</button>
+
+            </form>
+        </div>
+    </div>
+    <script th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          th:href="@{/lib/bootstrap/dist/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title> Welcome to Deepanshu's Airlines</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron jumbo-custom">
+            <h2>Welcome to Deepanshu Airlines</h2>
+            <h4>Voted the Best Airline ever for the Ninth Consecutive Year by Times Magazine</h4>
+
+        </div>
+        <div class="body-box">
+            <div class="box-heading">
+                <h4>Please Login or Register as a new user to search and book flights</h4>
+            </div>
+            <div class="row index-box">
+                <div class="col-sm-6 fa_col">
+                    <a th:href="@{/showLogin}">
+                        <i class="fa fa-lock fa_icon">
+                            <span> Login </span>
+                        </i>
+
+                    </a>
+
+                </div>
+                <div class="col-sm-6 fa_col">
+                    <a th:href="@{/showReg}">
+                        <i class="fa fa-user-plus fa_icon">
+                            <span>Register</span>
+                        </i>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+</body>
+</html>

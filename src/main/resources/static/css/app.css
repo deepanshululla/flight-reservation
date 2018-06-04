@@ -1,0 +1,38 @@
+.form_complete_reserve {
+
+    width:70%;
+    margin-right: 15%;
+    margin-left: 15%;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+    background-color: #d4c6b1a6;
+    margin-top: 1%;
+
+}
+.body-box {
+
+    width:70%;
+    margin-right: 15%;
+    margin-left: 15%;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+    background-color: #d4c6b1a6;
+    margin-top: 7%;
+}
+.box-heading {
+    margin: 0 auto;
+    text-align: center;
+}
+body {
+    background: url("../images/seatsView.jpg") repeat 0 0;
+    background-size:cover;
+}
+img {
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+#emailHelp {
+    color: #0b2e13;
+}
+

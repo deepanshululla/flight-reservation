@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          th:href="@{/lib/bootstrap/dist/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="../../static/css/app.css" th:href="@{/css/app.css}"/>
+    <title>Reservation Confirmation</title>
+</head>
+<body>
+    <div class="container">
+        <div class="body-box">
+            <!--if there is an laert message then-->
+            <div th:if="${msg}" class="alert alert-primary" >
+                <strong th:if="${msg}" th:text="${msg}"></strong>
+            </div>
+
+        </div>
+    </div>
+    <script th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+</body>
+</html>

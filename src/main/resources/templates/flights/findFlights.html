@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          th:href="@{/lib/bootstrap/dist/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="../../static/css/app.css" th:href="@{/css/app.css}"/>
+    <title>Find flights</title>
+</head>
+<body>
+    <div class="container">
+        <div class="body-box">
+            <h3 class="box-heading">Flight search</h3>
+            <br>
+            <form method="post" th:action="@{/findFlights}">
+
+                <div class="form-group row">
+                    <label for="source" class="col-sm-4 col-form-label">From</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="source" placeholder="Enter origin point" name="source">
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label for="destination" class="col-sm-4 col-form-label">To</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="destination" placeholder="Enter your destination" name="destination">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="departDate" class="col-sm-4 col-form-label">Departure date</label>
+                    <div class="col-sm-8">
+                     <input type="text" class="form-control" id="departDate" placeholder="Date for Departure" name="departDate">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+        </div>
+    </div>
+    <script th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+</body>
+</html>

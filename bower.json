@@ -1,0 +1,22 @@
+{
+  "name": "flightreservation",
+  "authors": [
+    "Deepanshu Lulla <dlulla@akamai.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/resources/static/lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "4.1.1",
+    "jquery": "3.1.1"
+  }
+}

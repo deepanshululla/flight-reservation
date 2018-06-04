@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          th:href="@{/lib/bootstrap/dist/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="../../static/css/app.css" th:href="@{/css/app.css}"/>
+    <title>Register User</title>
+</head>
+<body>
+    <div class="container">
+        <div class="body-box">
+            <h3 class="box-heading">User Registration</h3>
+            <br>
+
+            <form method="post" th:action="@{/registerUser}" th:object="${user}">
+                <div class="form-group row">
+                    <label for="first-name" class="col-sm-2 col-form-label">First Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="first-name" placeholder="First name" name="firstName">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="last-name" class="col-sm-2 col-form-label">Last Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="last-name" placeholder="Last name" name="lastName">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Email(this will be your username as well)">
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group row">
+                    <label for="password1" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password1" placeholder="Password" name="password">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="password2" class="col-sm-2 col-form-label">Confirm Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password2" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary btn-large">Sign in</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+.jumbo-custom {
+    background-color: #885c2e33;
+    text-align: center;
+    margin: 5% 5% 5% 5%;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.1);
+}
+.body-box {
+
+    width:70%;
+    margin-right: 15%;
+    margin-left: 15%;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+    background-color: #d4c6b1a6;
+    margin-top: 7%;
+}
+.box-heading {
+    margin: 0 auto;
+    text-align: center;
+}
+body {
+    background: url("../images/flightView.jpg") repeat 0 0;
+    background-size:cover;
+}
+img {
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+#emailHelp {
+    color: #0b2e13;
+}
+
+.fa.fa_icon {
+    text-align: center;
+    color:#46322269;
+    width: 100%;
+    font-size: 100px;
+}
+.fa.fa_icon:hover {
+    color: #ffa41a;
+}
+.index-box {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+    background-color: #8c63448c;
+    margin: 2% auto;
+
+}
+
+.fa.fa_icon span {
+    color:black;
+    font-size:20px;
+    padding:5px 0 10px 0;
+    display:block;
+    text-transform:uppercase;
+    font-family:'Josefin Sans';
+    letter-spacing:1px;
+}
+.fa.fa_icon i {
+    display: block;
+
+    margin: 10px auto 0;
+    line-height: 32px;
+    text-align: center;
+
+
+    margin-top:0;
+    padding-top:5px;
+}
