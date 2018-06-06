@@ -4,11 +4,14 @@ import com.flightreservation.flightreservation.domains.Flight;
 import com.flightreservation.flightreservation.domains.Passenger;
 import com.flightreservation.flightreservation.domains.Reservation;
 import com.flightreservation.flightreservation.dto.ReservationRequest;
+import com.flightreservation.flightreservation.exceptions.FlightNotFound;
 import com.flightreservation.flightreservation.repositories.FlightRepository;
 import com.flightreservation.flightreservation.repositories.PassengerRepository;
 import com.flightreservation.flightreservation.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
@@ -29,8 +32,11 @@ public class ReservationServiceImpl implements ReservationService {
         // if the payment is successful proceed..
 
         Long flightId=reservationRequest.getFlightId();
-        Flight flight=flightRepository.findById(flightId).get();
-
+        Optional<Flight> flightOptional=flightRepository.findById(flightId);
+        if (!flightOptional.isPresent()) {
+            throw new FlightNotFound("No flight found with id "+flightId);
+        }
+        Flight flight=flightOptional.get();
         Passenger passenger=new Passenger();
         passenger.setFirstName(reservationRequest.getPassengerFirstName());
         passenger.setMiddleName(reservationRequest.getPassengerMiddleName());
