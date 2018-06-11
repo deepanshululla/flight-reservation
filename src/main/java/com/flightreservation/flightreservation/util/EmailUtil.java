@@ -18,7 +18,7 @@ public class EmailUtil {
     @Value("${com.flightreservation.flightreservation.itinerary.email.body}")
     private String EMAIL_BODY = "Please find your Itinerary attached.";
 
-    @Value("${com.flightreservation.flightreservation.itinerary.email.subject}")
+    @Value("${com.flightreservation.flightreservation.itinerary.email.subject")
     private String EMAIL_SUBJECT = "Itinerary for your Flight";
 
     @Autowired

@@ -4,9 +4,11 @@ import com.flightreservation.flightreservation.domains.User;
 import com.flightreservation.flightreservation.exceptions.UserAlreadyRegistered;
 import com.flightreservation.flightreservation.exceptions.UserNotFound;
 import com.flightreservation.flightreservation.repositories.UserRepository;
+import com.flightreservation.flightreservation.services.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +23,13 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+
+    @Autowired
+    private SecurityService securityService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
@@ -40,6 +49,7 @@ public class UserController {
             throw new UserAlreadyRegistered("Email exists: "+user.getEmail());
         }
         LOGGER.info("Email Exists: "+user.getEmail());
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "login/login";
     }
@@ -60,7 +70,9 @@ public class UserController {
             throw new UserNotFound("Email not found: "+email);
         }
         LOGGER.info("Email Exists: "+email);
-        if(foundUser.get().getPassword().equals(password)) {
+        boolean loginResponse = securityService.login(email, password);
+        if(loginResponse) {
+            modelmap.addAttribute("msg","Successfully logged in");
             return "flights/findFlights";
         } else {
             LOGGER.info("User entered Invalid credentials email:{} and password:{}",email,password);

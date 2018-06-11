@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,6 +32,18 @@ public class FlightController {
         modelMap.addAttribute("flights",flights);
         LOGGER.info("Flights found are"+flights.toString());
         return "flights/displayFlights";
+    }
+
+    @RequestMapping("/admin/showAddFlight")
+    public String showAddFlightPage(){
+        return "flights/addFlight";
+    }
+
+    @RequestMapping("/admin/addFlight")
+    public String addFlight(@ModelAttribute("flight") Flight flight,ModelMap modelmap){
+       flightRepository.save(flight);
+       modelmap.addAttribute("msg","Flight Added Successfully");
+       return "flights/addFlight";
     }
 
 }

@@ -5,6 +5,10 @@
 - Added Spring Data JPA(hibernate) as an ORM to interact with the MYSQL database.
 - Designed front end templates using thymeleaf, html,css,bootstrap
 - Added Logging feature and custom log rotation policies.
+- Used spring security to encode passwords and perform login operation as well as to define authorization
+to seperate admin and non admin roles.
+
+
 
 
 
@@ -24,14 +28,22 @@ with reservations.
 
 https://github.com/deepanshululla/flight-checkin
 
+
 #### Database Model
 
-There are 4 tables
+There are 6 tables
 
 - FLIGHT
 - RESERVATION
 - USER
 - PASSENGER
+- User_Role
+- Role
 
 There is one to one mapping assumed between reservation and passenger as well as reservation
 and flight.
+
+The role is used to classify different types of users for eg admin users and normal users.
+
+User_role table creates a many to many relationship between users and roles. This means
+we can assign multiple roles to a user and a user can be assigned multiple roles.
