@@ -1,12 +1,13 @@
 ## Airline E-Commerce website using Java Spring boot and thymeleaf
-- Created a website where users can login/register(using spring security) as well as search and book flights.
-- Created Integration layer(REST API) for flight checkin microservice to check in passengers
-  with reservations. Developed a microservice where users can check in to their existing flight.
-- Added Spring Data JPA(hibernate) as an ORM to interact with the MYSQL database.
-- Designed front end templates using thymeleaf, html,css,bootstrap
-- Added Logging feature and custom log rotation policies.
-- Used spring security to encode passwords and perform login operation as well as to define authorization
-to seperate admin and non admin roles.
+
+- Created a website clone for an Ecommerce airline web application using Spring boot, Spring data JPA(ORM) and MySQL. Added features to search and book flights.
+
+- Created an REST API to serve an an integration layer for flight checkin microservice. Created the same microservice for passengers to check in.
+
+- Encoded passwords to prevent them from being stored in plain text and defined roles for different types of users to perform authentication and authrorization.
+
+- Added logging features and defined custom log rotation policies to log information to an external log file.
+
 
 
 
