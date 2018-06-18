@@ -1,1 +1,1 @@
-web: java -jar target/flightreservation-0.0.1-SNAPSHOT.jar
+web: java -Dspring.datasource.url -jar target/flightreservation-0.0.1-SNAPSHOT.jar
