@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymleaf.org">
+      xmlns:th="http://www.thymleaf.org" ng-app="flightReservation">
 
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet"
           th:href="@{/lib/bootstrap/dist/css/bootstrap.min.css}" />
     <link rel="stylesheet" href="../../static/css/app.css" th:href="@{/css/app.css}"/>
+    <script th:src="@{/lib/angular/angular.min.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
     <title>Login Page</title>
 </head>
 <body>
-    <div class="container">
-        <div class="body-box">
-            <!--if there is an laert message then-->
-            <div th:if="${msg}" class="alert alert-primary" >
-                <strong th:if="${msg}" th:text="${msg}"></strong>
-            </div>
-            <h3 class="box-heading">User Login</h3>
-            <br>
-            <form method="post" th:action="@{/login}">
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+<div class="container" ng-controller="loginController">
+    <div class="body-box">
+        <!--if there is an alert message then-->
+        <div th:if="${msg}" class="alert alert-primary" >
+            <strong th:if="${msg}" th:text="${msg}"></strong>
 
         </div>
+        <h3 class="box-heading">{{heading}}</h3>
+        <br>
+        <form method="post" th:action="@{/login}" name="loginForm" novalidate ng-submit="loginValidate()">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required
+                       ng-model="user.email" ng-required="true"
+                >
+                <p class="error validationerror" ng-show="loginForm.email.$invalid && loginForm.email.$touched">Please fill out correct email</p>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required
+                       ng-model="user.password"
+                       ng-required="true"
+                       ng-minlength="3">
+                <p class="error validationerror" ng-show="loginForm.password.$invalid && loginForm.password.$touched">Please fill out correct password. Pasword must be atleast 3 characters</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Login</button>
+        </form>
+
     </div>
-    <script th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+</div>
+<script th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
 </body>
 </html>
