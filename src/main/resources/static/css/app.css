@@ -35,4 +35,18 @@ img {
 #emailHelp {
     color: #0b2e13;
 }
-
+input.ng-invalid.ng-touched {
+    border: 1px solid #DA3637;
+}
+input.ng-valid.ng-touched {
+    border: 1px solid #509D12;
+}
+.ng-invalid .btn {
+    background-color: gray;
+}
+.ng-valid .btn {
+    background-color: dodgerblue;
+}
+.error {
+    color: red;
+}

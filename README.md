@@ -8,7 +8,7 @@
 
 - Added logging features and defined custom log rotation policies to log information to an external log file.
 
-
+- Added AngularJs to validate form for matching passwords and providing feedback if form parameters are not valid.
 
 
 

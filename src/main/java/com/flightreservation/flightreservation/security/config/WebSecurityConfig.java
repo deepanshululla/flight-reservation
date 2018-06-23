@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
                 .antMatchers("/showReg", "/", "/index.html", "/registerUser", "/login", "/showLogin", "/login/*")
                 .permitAll()
-                .antMatchers("/css/**","/lib/**","/images/**").permitAll()
+                .antMatchers("/css/**","/lib/**","/images/**","/js/**").permitAll()
                 .antMatchers("/admin/showAddFlight","/admin/admin/addFlight","/admin/*").hasAnyAuthority("ADMIN").anyRequest().authenticated()
                 .and().csrf().disable();
     }

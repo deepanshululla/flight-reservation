@@ -68,3 +68,18 @@ img {
     margin-top:0;
     padding-top:5px;
 }
+input.ng-invalid.ng-touched {
+    border: 1px solid #DA3637;
+}
+input.ng-valid.ng-touched {
+    border: 1px solid #509D12;
+}
+.ng-invalid .btn .btn-primary{
+    background-color: gray;
+}
+.ng-valid .btn .btn-primary{
+    background-color: dodgerblue;
+}
+.error {
+    color: red;
+}
