@@ -1,67 +1,93 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymleaf.org">
+      xmlns:th="http://www.thymleaf.org" ng-app="flightReservation">
 
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet"
           th:href="@{/lib/bootstrap/dist/css/bootstrap.min.css}" />
     <link rel="stylesheet" href="../../static/css/app.css" th:href="@{/css/app.css}"/>
+    <script th:src="@{/lib/angular/angular.min.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
     <title>Register User</title>
 </head>
 <body>
-    <div class="container">
-        <div class="body-box">
-            <h3 class="box-heading">User Registration</h3>
-            <br>
+<div class="container" ng-controller="registrationController">
+    <div class="body-box">
+        <h3 class="box-heading">{{heading}}</h3>
+        <br>
+        <p ng-show="user.firstName" align="center"> Welcome {{user.firstName}}</p>
 
-            <form method="post" th:action="@{/registerUser}" th:object="${user}">
-                <div class="form-group row">
-                    <label for="first-name" class="col-sm-2 col-form-label">First Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="first-name" placeholder="First name" name="firstName" required>
-                    </div>
+        <form method="post" th:action="@{/registerUser}" th:object="${user}" name="registerForm" novalidate ng-submit="registerValidate()">
+            <div class="form-group row">
+                <label for="first-name" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="first-name"
+                           placeholder="First name" name="firstName" required
+                           ng-model="user.firstName" ng-required="true"
+                    >
+                    <p class="error validationerror" ng-show="registerForm.firstName.$invalid && registerForm.firstName.$touched">Please fill first name</p>
                 </div>
+            </div>
 
-                <div class="form-group row">
-                    <label for="last-name" class="col-sm-2 col-form-label">Last Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="last-name" placeholder="Last name" name="lastName" required>
-                    </div>
+            <div class="form-group row">
+                <label for="last-name" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="last-name"
+                           placeholder="Last name" name="lastName" required
+                           ng-model="user.lastName" ng-required="true"
+                    >
+                    <p class="error validationerror" ng-show="registerForm.lastName.$invalid && registerForm.lastName.$touched">Please fill last name</p>
+
                 </div>
+            </div>
 
 
-                <div class="form-group row">
-                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" name="email" class="form-control" id="email" placeholder="Email(this will be your username as well)" required>
-                    </div>
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" name="email" class="form-control"
+                           id="email" placeholder="Email(this will be your username as well)" required
+                           ng-model="user.email" ng-required="true"
+                    >
+                    <p class="error validationerror" ng-show="registerForm.email.$invalid && registerForm.email.$touched">Please fill out correct email</p>
                 </div>
-                <div class="form-group row">
-                    <label for="password1" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="password1" placeholder="Password" name="password" required>
-                    </div>
-                </div>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group row">
+                <label for="password1" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password1" placeholder="Password" name="password"
+                           required
+                           ng-model="user.password" ng-required="true"
+                           ng-minlength="3" ng-maxlength="50"
+                    >
+                    <p class="error validationerror" ng-show="registerForm.password.$invalid && registerForm.password.$touched">Please fill out correct password. Pasword must be atleast 3 characters</p>
 
-                <div class="form-group row">
-                    <label for="password2" class="col-sm-2 col-form-label">Confirm Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="password2" placeholder="Password" required>
-                    </div>
                 </div>
+            </div>
 
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary btn-large">Sign in</button>
-                    </div>
+            <div class="form-group row">
+                <label for="password2" class="col-sm-2 col-form-label">Confirm Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password2" placeholder="Password" name="password2"
+                           ng-model="user.confirmpwd" ng-required="true"
+                           ng-minlength="3" ng-maxlength="50" equals="{{user.password}}"
+                    >
+                    <p class="error validationerror" ng-show="registerForm.password2.$error.equals"> Passwords do not match!! </p>
                 </div>
-            </form>
-        </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary btn-large" ng-disabled="registerForm.$invalid">Register</button>
+                </div>
+            </div>
+        </form>
     </div>
+</div>
 
-    <script th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
 </body>
 </html>
